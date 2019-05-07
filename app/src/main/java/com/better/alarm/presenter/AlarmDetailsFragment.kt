@@ -32,9 +32,11 @@ import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.CheckBox
+import android.widget.EditText
+import android.widget.LinearLayout
+import android.widget.TextView
 import com.better.alarm.R
-import com.better.alarm.checkPermissions
 import com.better.alarm.configuration.AlarmApplication.container
 import com.better.alarm.configuration.Prefs
 import com.better.alarm.configuration.Store
@@ -45,6 +47,7 @@ import com.better.alarm.logger.Logger
 import com.better.alarm.lollipop
 import com.better.alarm.model.Alarmtone
 import com.better.alarm.util.Optional
+import com.better.alarm.view.RingtonePreference
 import com.better.alarm.view.showDialog
 import com.better.alarm.view.summary
 import com.f2prateek.rx.preferences2.RxSharedPreferences
@@ -159,20 +162,12 @@ class AlarmDetailsFragment : Fragment() {
 
         mRingtoneRow.setOnClickListener {
             editor.firstOrError().subscribe { editor ->
-                try {
-                    startActivityForResult(Intent(RingtoneManager.ACTION_RINGTONE_PICKER).apply {
-                        putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, editor.alarmtone.ringtoneManagerString())
-
-                        putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_DEFAULT, true)
-                        putExtra(RingtoneManager.EXTRA_RINGTONE_DEFAULT_URI, RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM))
-
-                        putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_SILENT, true)
-                        putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_ALARM)
-                    }, 42)
-                } catch (e: Exception) {
-                    Toast.makeText(context, context.getString(R.string.details_no_ringtone_picker), Toast.LENGTH_LONG)
-                            .show()
-                }
+                RingtonePreference.showPicker(
+                        fragmentCompat = this,
+                        ringtoneManagerString = editor.alarmtone.ringtoneManagerString(),
+                        showSilent = true,
+                        showDefault = true
+                )
             }
         }
 
@@ -196,21 +191,7 @@ class AlarmDetailsFragment : Fragment() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (data != null && requestCode == 42) {
-            val alert: String? = data.getParcelableExtra<Uri>(RingtoneManager.EXTRA_RINGTONE_PICKED_URI)?.toString()
-
-            logger.d("Got ringtone: $alert")
-
-            val alarmtone = when (alert) {
-                null -> Alarmtone.Silent()
-                RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM).toString() -> Alarmtone.Default()
-                else -> Alarmtone.Sound(alert)
-            }
-
-            logger.d("onActivityResult $alert -> $alarmtone")
-
-            checkPermissions(activity, listOf(alarmtone))
-
+        RingtonePreference.onActivityResult(activity, requestCode, data) { alarmtone ->
             modify("Ringtone picker") { prev ->
                 prev.with(alarmtone = alarmtone, enabled = true)
             }

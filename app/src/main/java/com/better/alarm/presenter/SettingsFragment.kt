@@ -14,13 +14,13 @@ import com.better.alarm.configuration.AlarmApplication.container
 import com.better.alarm.configuration.Prefs
 import com.better.alarm.lollipop
 import com.better.alarm.model.Alarmtone
+import com.better.alarm.view.RingtonePreference
 import com.better.alarm.view.VolumePreference
 import io.reactivex.disposables.CompositeDisposable
 
 /**
  * Created by Yuriy on 24.07.2017.
  */
-
 class SettingsFragment : PreferenceFragment() {
     private val ALARM_STREAM_TYPE_BIT = 1 shl AudioManager.STREAM_ALARM
     private val vibrator = container().vibrator()
@@ -89,6 +89,7 @@ class SettingsFragment : PreferenceFragment() {
         }
 
         (findPreference("volume_preference") as VolumePreference).onResume()
+        (findPreference("ringtone_preference") as RingtonePreference).onResume(this)
 
         checkPermissions(activity, listOf(Alarmtone.Default()))
 
@@ -161,7 +162,14 @@ class SettingsFragment : PreferenceFragment() {
     override fun onPause() {
         disposables.dispose()
         (findPreference("volume_preference") as VolumePreference).onPause()
+        (findPreference("ringtone_preference") as RingtonePreference).onPause()
         super.onPause()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        RingtonePreference.onActivityResult(activity, requestCode, data) {
+            (findPreference("ringtone_preference") as RingtonePreference).onActivityResult(it)
+        }
     }
 
     private fun findListPreference(key: String) = findPreference(key) as ListPreference
