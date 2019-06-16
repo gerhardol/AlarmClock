@@ -105,4 +105,6 @@
         \n\· <a href="https://www.paypal.me/YuriyKulikov">PayPal</a>
         \n\· <a href="https://play.google.com/store/apps/details?id=com.premium.alarm">Премиум версия (донейт)</a>
     </string>
+    <string name="updatedNotificationTitle">Приложкние было обновлено!</string>
+    <string name="updatedNotificationText">Кликните здесь, чтобы убедиться, что всё в порядке. Проверьте, что установленный будильник показан в панели уведомлений. Спасибо за внимание!</string>
 </resources>

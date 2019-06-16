@@ -165,4 +165,6 @@
         \n· <a href="https://www.paypal.me/YuriyKulikov">PayPal</a>
         \n· <a href="https://play.google.com/store/apps/details?id=com.premium.alarm">Go premium</a>
     </string>
+    <string name="updatedNotificationTitle">Congratulations! The app has been updated!</string>
+    <string name="updatedNotificationText">Just to make sure that everything is fine please click here to go into the app. Please also check that an expected alarm time is shown in the notification panel. Thank you for using our app!</string>
 </resources>

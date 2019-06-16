@@ -105,4 +105,6 @@
         \n· <a href="https://www.paypal.me/YuriyKulikov">PayPal</a>
         \n· <a href="https://play.google.com/store/apps/details?id=com.premium.alarm">Premium version (donate)</a>
     </string>
+    <string name="updatedNotificationTitle">Die App wurde aktuelisiert!</string>
+    <string name="updatedNotificationText">Klick hier um in die App zu wechseln. Schau bitte an ob alles in Ordnung ist. Danke!</string>
 </resources>

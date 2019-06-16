@@ -18,6 +18,7 @@ package com.better.alarm.model
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import com.better.alarm.alert.UpdateNotifications
 import com.better.alarm.configuration.AlarmApplication.container
 import com.better.alarm.interfaces.PresentationToModelIntents
 
@@ -42,6 +43,7 @@ class AlarmsReceiver : BroadcastReceiver() {
                 Intent.ACTION_MY_PACKAGE_REPLACED -> {
                     log.d("Refreshing alarms because of ${intent.action}")
                     alarms.refresh()
+                    UpdateNotifications.show(context)
                 }
                 Intent.ACTION_TIME_CHANGED -> alarms.onTimeSet()
 
