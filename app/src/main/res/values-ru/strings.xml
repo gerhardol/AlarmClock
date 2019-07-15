@@ -31,10 +31,8 @@
     <string name="master_volume">Общая громкость</string>
     <string name="menu_share">Поделиться</string>
     <string name="menu_bugreport">Отчет об ошибке</string>
-    <string name="dialog_say_thanks_title">Сказать спасибо</string>
     <string name="dialog_say_thanks_review_button">Оставить отзыв</string>
     <string name="dialog_bugreport_hint">Опишите проблему здесь</string>
-    <string name="dialog_say_thanks_review_message">Большое спасибо! Положительные отзывы привлекают больше пользователей, что позволяет нам получать больше предложоний по улучшениям и отчетов об ошибках.Вы хотите продолжить?</string>
     <string name="longclick_dismiss_title">Longclick Отключить</string>
     <string name="longclick_dismiss_summary">Держать кнопку "Отключить" чтобы выключить будильник</string>
     <string name="fade_in_time_sec_title">Нарастание громкости</string>
@@ -100,7 +98,25 @@
         \n· <a href="https://github.com/yuriykulikov/AlarmClock">Прочитать о проекте на GitHub</a>
 
         \n\nПоддержать разработку
-        \n\· <a href="https://www.paypal.me/YuriyKulikov">PayPal</a>
         \n\· <a href="https://play.google.com/store/apps/details?id=com.premium.alarm">Премиум версия (донейт)</a>
+        \n\· <a href="https://money.yandex.ru/to/410019676183865">Yandex</a>
+        \n\· <a href="https://www.paypal.me/YuriyKulikov">PayPal</a>
     </string>
+    <string name="dialog_bugreport_faq"><b>Как исправить некоторые проблемы</b>
+        \n\nЕсли приложение работало, а потом перестало (например, нельзя выключить будильник), то по всей вероятности Андроид попортил кэш приложения. Это бывает редко, но бывает. <b>Переустановка обычно решает такие проблемы!</b>
+
+        \n\nЕсли нет звука, проверьте настройки. Используйте "Только будильник" на 8 Андроиде и не используйте "не беспокоить" на 9. Подбробнее на <a href="https://support.google.com/android/answer/9069335?hl=ru">странице поддержки Google</a>
+
+        \n\nЕсли будильник не сработал, убедитесь, что вы не выключаете его случайно во сне. Мы получаем довольно много подобный сообщений и в логах видно, что пользователь нажимает кнопку "выключить". Попробуйте на ночь убрать телефон подальше.
+
+        \n\nЕсли ничего не помагает, напишите нам сообщение. Мы постараемся помочь.
+    </string>
+    <string name="dialog_say_thanks_title">Поблагодарить</string>
+    <string name="dialog_say_thanks_review_message">Мы очень рады что вам понравился наш будильник! Простой будильник это приложение с открытым исходным кодом. Мы не преследуем цели получить прибыль, поэтому мы никогда не добавим рекламу и не будем собирать и продавать ваши данные (в отличие от большинста других приложений). Тем не менее, мы будем крайне признательны если вы поблагодарите нас. Одним из лучших способов является написание хорошего отзыва. Вы также можете задать в отзыве вопрос или описать пожелаение.</string>
+    <string name="dialog_say_thanks_premium_text">Если вам нравится приложение, попробуйта Премиум версию! Премиум, звучит здорово, не так ли?</string>
+    <string name="dialog_say_thanks_donate_message">Другая отличная возможность это купить мне чашку кофе:-) Вы можете сделать это одним из нижеперечисленных способов</string>
+    <string name="dialog_say_thanks_premium_text_as_button"><a href="https://play.google.com/store/apps/details?id=com.premium.alarm">Премиум версия</a></string>
+    <string name="dialog_say_thanks_donate_paypal"><a href="https://www.paypal.me/YuriyKulikov">PayPal</a></string>
+    <string name="dialog_say_thanks_donate_yandex"><a href="https://money.yandex.ru/to/410019676183865">Yandex</a></string>
+
 </resources>
