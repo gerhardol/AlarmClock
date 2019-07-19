@@ -13,9 +13,9 @@
      limitations under the License.
 -->
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/settings">
-    <PreferenceCategory
+    <androidx.preference.PreferenceCategory
         android:key="preference_category_sound_key"
         android:title="@string/preference_category_sound">
         <com.better.alarm.view.VolumePreference
@@ -25,21 +25,21 @@
             android:summary="@string/alarm_volume_summary"
             android:title="@string/alarm_volume_title" />
 
-        <CheckBoxPreference
+        <androidx.preference.CheckBoxPreference
             android:defaultValue="true"
             android:key="alarm_in_silent_mode"
             android:summary="@string/alarm_in_silent_mode_summary"
             android:title="@string/alarm_in_silent_mode_title" />
 
-        <CheckBoxPreference
+        <androidx.preference.CheckBoxPreference
             android:defaultValue="true"
             android:key="vibrate"
             android:title="@string/alarm_vibrate" />
-    </PreferenceCategory>
-    <PreferenceCategory
+    </androidx.preference.PreferenceCategory>
+    <androidx.preference.PreferenceCategory
         android:key="preference_category_ui"
         android:title="@string/preference_category_ui">
-        <ListPreference
+        <androidx.preference.ListPreference
             android:defaultValue="dark"
             android:dialogTitle="@string/theme_title"
             android:entries="@array/themes_entries"
@@ -47,7 +47,7 @@
             android:key="theme"
             android:title="@string/theme_title" />
 
-        <ListPreference
+        <androidx.preference.ListPreference
             android:defaultValue="classic"
             android:dialogTitle="@string/preference_list_row_layout_title"
             android:entries="@array/preference_list_row_layout_entries"
@@ -55,14 +55,14 @@
             android:key="list_row_layout"
             android:title="@string/preference_list_row_layout_title" />
 
-        <CheckBoxPreference
+        <androidx.preference.CheckBoxPreference
             android:defaultValue="true"
             android:key="longclick_dismiss_key"
             android:summary="@string/longclick_dismiss_summary"
             android:title="@string/longclick_dismiss_title" />
-    </PreferenceCategory>
-    <PreferenceCategory android:title="@string/preference_category_durations">
-        <ListPreference
+    </androidx.preference.PreferenceCategory>
+    <androidx.preference.PreferenceCategory android:title="@string/preference_category_durations">
+        <androidx.preference.ListPreference
             android:defaultValue="30"
             android:dialogTitle="@string/prealarm_duration_title"
             android:entries="@array/prealarm_duration_entries"
@@ -70,7 +70,7 @@
             android:key="prealarm_duration"
             android:title="@string/prealarm_duration_title" />
 
-        <ListPreference
+        <androidx.preference.ListPreference
             android:defaultValue="30"
             android:dialogTitle="@string/fade_in_time_sec_title"
             android:entries="@array/fade_in_time_sec_entries"
@@ -78,7 +78,7 @@
             android:key="fade_in_time_sec"
             android:title="@string/fade_in_time_sec_title" />
 
-        <ListPreference
+        <androidx.preference.ListPreference
             android:defaultValue="10"
             android:dialogTitle="@string/snooze_duration_title"
             android:entries="@array/snooze_duration_with_off_entries"
@@ -86,12 +86,12 @@
             android:key="snooze_duration"
             android:title="@string/snooze_duration_title" />
 
-        <ListPreference
+        <androidx.preference.ListPreference
             android:defaultValue="10"
             android:dialogTitle="@string/auto_silence_title"
             android:entries="@array/auto_silence_entries"
             android:entryValues="@array/auto_silence_values"
             android:key="auto_silence"
             android:title="@string/auto_silence_title" />
-    </PreferenceCategory>
-</PreferenceScreen>
+    </androidx.preference.PreferenceCategory>
+</androidx.preference.PreferenceScreen>

@@ -114,7 +114,7 @@ public class AlarmsTest {
         return createAlarms(mockQuery());
     }
 
-    @android.support.annotation.NonNull
+    @androidx.annotation.NonNull
     private DatabaseQuery mockQuery() {
         final DatabaseQuery query = mock(DatabaseQuery.class);
         List<AlarmActiveRecord> list = new ArrayList<>();

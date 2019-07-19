@@ -18,8 +18,9 @@ package com.better.alarm.configuration;
 import android.app.AlarmManager;
 import android.app.Application;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.view.ViewConfiguration;
+
+import androidx.preference.PreferenceManager;
 
 import com.better.alarm.BuildConfig;
 import com.better.alarm.R;
@@ -235,12 +236,12 @@ public class AlarmApplication extends Application {
         super.onCreate();
     }
 
-    @android.support.annotation.NonNull
+    @androidx.annotation.NonNull
     public static Container container() {
         return sContainer;
     }
 
-    @android.support.annotation.NonNull
+    @androidx.annotation.NonNull
     public static DynamicThemeHandler themeHandler() {
         return sThemeHandler;
     }

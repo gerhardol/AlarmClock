@@ -1,8 +1,7 @@
 package com.better.alarm.test;
 
-import android.support.test.rule.ActivityTestRule;
-import android.support.test.runner.AndroidJUnit4;
-import android.test.suitebuilder.annotation.LargeTest;
+import androidx.test.rule.ActivityTestRule;
+import androidx.test.runner.AndroidJUnit4;
 
 import com.better.alarm.R;
 import com.better.alarm.configuration.AlarmApplication;
@@ -21,12 +20,11 @@ import java.util.Locale;
 
 import kotlin.collections.CollectionsKt;
 
-import static android.support.test.espresso.matcher.ViewMatchers.isEnabled;
+import static androidx.test.espresso.matcher.ViewMatchers.isEnabled;
 import static cortado.Cortado.onView;
 import static org.hamcrest.Matchers.not;
 
 @RunWith(AndroidJUnit4.class)
-@LargeTest
 public class PickerTest extends BaseTest {
     public ActivityTestRule<AlarmsListActivity> listActivity = new ActivityTestRule<AlarmsListActivity>(
             AlarmsListActivity.class, false, /* autostart*/ true);

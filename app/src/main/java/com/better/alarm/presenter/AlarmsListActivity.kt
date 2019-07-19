@@ -21,12 +21,12 @@ import android.annotation.TargetApi
 import android.content.pm.ActivityInfo
 import android.os.Build
 import android.os.Bundle
-import android.support.v4.app.FragmentActivity
-import android.support.v4.app.FragmentTransaction
 import android.transition.*
 import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentTransaction
 import com.better.alarm.BuildConfig
 import com.better.alarm.R
 import com.better.alarm.checkPermissions
@@ -160,9 +160,13 @@ class AlarmsListActivity : FragmentActivity() {
 
         this.mActionBarHandler = ActionBarHandler(this, store, alarms)
 
-        val isTablet = !resources.getBoolean(R.bool.isTablet)
-        if (isTablet) {
-            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        val notTablet = !resources.getBoolean(R.bool.isTablet)
+        if (notTablet) {
+            try {
+                requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+            } catch (e: Exception) {
+                logger.e("Failed to lock into SCREEN_ORIENTATION_PORTRAIT")
+            }
         }
 
         setContentView(R.layout.list_activity)
@@ -198,7 +202,8 @@ class AlarmsListActivity : FragmentActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        return mActionBarHandler.onCreateOptionsMenu(menu, menuInflater, actionBar)
+        return actionBar?.let { mActionBarHandler.onCreateOptionsMenu(menu, menuInflater, it) }
+                ?: false
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -329,7 +334,7 @@ class AlarmsListActivity : FragmentActivity() {
                                     daysOfWeek = DaysOfWeek(savedInstanceState.getInt("daysOfWeek")),
                                     isPrealarm = savedInstanceState.getBoolean("isPrealarm"),
                                     alarmtone = Alarmtone.fromString(savedInstanceState.getString("alarmtone")),
-                                    label = savedInstanceState.getString("label"),
+                                    label = savedInstanceState.getString("label") ?: "",
                                     isVibrate = true
                             )
                     )

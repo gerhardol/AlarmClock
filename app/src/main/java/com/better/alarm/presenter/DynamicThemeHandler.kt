@@ -2,7 +2,7 @@ package com.better.alarm.presenter
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.preference.PreferenceManager
+import androidx.preference.PreferenceManager
 import com.better.alarm.R
 import com.better.alarm.alert.AlarmAlertFullScreen
 
@@ -26,7 +26,7 @@ class DynamicThemeHandler(context: Context) {
         else -> R.style.DefaultDarkTheme
     }
 
-    private fun preference(): String = sp.getString(themeKey, "dark")
+    private fun preference(): String = sp.getString(themeKey, "dark") ?: "dark"
 
     fun getIdForName(name: String): Int = when {
         preference() == "light" && name == AlarmAlertFullScreen::class.java.name -> R.style.AlarmAlertFullScreenLightTheme
