@@ -104,17 +104,17 @@
     <string name="dialog_bugreport_faq"><b>So lösen Sie die häufigsten Probleme</b>
         \n\nFalls irgendwas hat früher funktioniert, aber nicht mehr, dann in aller Wahscheinligkeiten hat der Android das App Cache zestört. Es passiert immer mal wieder. <b>Das Plblem lässt sich durch neu Installieren lösen.</b>
 
-        \n\nIf there is no sound, please check your device settings. You must use at least Alarms Only on Android 8 and you should not use Do not disturb on Android 9. Read more on <a href="https://support.google.com/android/answer/9069335">Google support page</a>
+        \n\nWenn kein Ton gibt, bitte überpüft die Einstellungen. Mehr Info auf <a href="https://support.google.com/android/answer/9069335?hl=de">Google support Seite</a>.
 
-        \n\nIf alarm did not go off, please make sure that you did not accidentally switched it off. We get a number of complaints regarding this and we see that users are simply switching the alarm after a while <b>in their sleep</b>. If you experience that, move the phone further away when you go to bed.
+        \n\nWenn der Wecker nicht geklingelt hat, es ist möglich, dass Sie habe den Wecker aus Versehen ausgeschaltet. Wir bekommen relativ oft solche Beschwerden und oft sehen in Logs, dass die "Snooze" Taste gedrückt wurde. Wenn das der Fall ist, probieren Sie das Handy weiter weg von Bett zu halten.
 
-        \n\nIf nothing helps, write us a message in the field below. We will do our best to try to help you.
+        \n\nWenn nichts hilft, schreiben Sie uns eine Nachricht. Wir versuchen Ihnen zu helfen.
     </string>
-    <string name="dialog_say_thanks_title">Say thanks</string>
-    <string name="dialog_say_thanks_review_message">Thanks a lot for taking your time to say thanks! Simple alarm clock is an open source non-profit project. We will never use ads or gather user data to earn money. However, we are extremely happy if you appreciate our work. One of the best ways to say thanks is to write a positive review. You can also ask a question or leave your feature request.</string>
-    <string name="dialog_say_thanks_premium_text">If you really like the app, consider upgrading to the premium version! Premium sounds great, does it not?</string>
-    <string name="dialog_say_thanks_donate_message">Another great way to support the app is to buy me a coffee! You can do this using one of the following options</string>
-    <string name="dialog_say_thanks_premium_text_as_button"><a href="https://play.google.com/store/apps/details?id=com.premium.alarm">Go premium</a></string>
+    <string name="dialog_say_thanks_title">Sagen Danke</string>
+    <string name="dialog_say_thanks_review_message">Es freut uns sehr das unser App ihnen gefällt! Simple alarm clock is ein open source Projekt. We will never use ads or gather user data to earn money. However, we are extremely happy if you appreciate our work. One of the best ways to say thanks is to write a positive review. You can also ask a question or leave your feature request.</string>
+    <string name="dialog_say_thanks_premium_text">Wenn unser App ihnen gut gefällt, überlegen Sie die Premium Version zu kaufen. Premium ist immer gut.</string>
+    <string name="dialog_say_thanks_donate_message">Andere Möglichkeit ist einfach uns eine Kaffe zu kaufen. Siehe Optionen unten:</string>
+    <string name="dialog_say_thanks_premium_text_as_button"><a href="https://play.google.com/store/apps/details?id=com.premium.alarm">Premium Version</a></string>
     <string name="dialog_say_thanks_donate_paypal"><a href="https://www.paypal.me/YuriyKulikov">PayPal</a></string>
     <string name="dialog_say_thanks_donate_yandex"><a href="https://money.yandex.ru/to/410019676183865">Yandex</a></string>
 </resources>

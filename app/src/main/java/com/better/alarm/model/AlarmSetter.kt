@@ -32,9 +32,12 @@ interface AlarmSetter {
         override fun removeRTCAlarm() {
             log.d("Removed all alarms")
             val pendingAlarm = PendingIntent.getBroadcast(
-                    mContext, /* request code */
+                    mContext,
                     pendingAlarmRequestCode,
-                    Intent(ACTION_FIRED),
+                    Intent(ACTION_FIRED).apply {
+                        // must be here, otherwise replace does not work
+                        setClass(mContext, AlarmsReceiver::class.java)
+                    },
                     PendingIntent.FLAG_UPDATE_CURRENT
             )
             am.cancel(pendingAlarm)
@@ -48,7 +51,7 @@ interface AlarmSetter {
                         putExtra(EXTRA_ID, id)
                         putExtra(EXTRA_TYPE, typeName)
                     }
-                    .let { PendingIntent.getBroadcast(mContext, /* request code */ pendingAlarmRequestCode, it, PendingIntent.FLAG_UPDATE_CURRENT) }
+                    .let { PendingIntent.getBroadcast(mContext, pendingAlarmRequestCode, it, PendingIntent.FLAG_UPDATE_CURRENT) }
 
             setAlarmStrategy.setRTCAlarm(calendar, pendingAlarm)
         }
