@@ -1,13 +1,14 @@
 package com.better.alarm.presenter
 
+import android.app.Activity
 import android.content.ContentResolver
 import android.content.Intent
 import android.media.AudioManager
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
-import android.preference.*
 import android.provider.Settings
+import androidx.preference.*
 import com.better.alarm.R
 import com.better.alarm.checkPermissions
 import com.better.alarm.configuration.AlarmApplication.container
@@ -28,11 +29,9 @@ class SettingsFragment : PreferenceFragment() {
     private val disposables = CompositeDisposable()
 
     private val contentResolver: ContentResolver
-        get() = activity.contentResolver
+        get() = requireActivity().contentResolver
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         addPreferencesFromResource(R.xml.preferences)
 
         val category = findPreference("preference_category_sound_key") as PreferenceCategory
@@ -52,16 +51,23 @@ class SettingsFragment : PreferenceFragment() {
 
         findPreference("theme").onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, _ ->
             Handler().post {
-                val intent = activity.packageManager.getLaunchIntentForPackage(activity.packageName).apply {
+                requireActivity().packageManager.getLaunchIntentForPackage(requireActivity().packageName)?.apply {
                     addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }?.let {
+                    startActivity(it)
                 }
-                startActivity(intent)
             }
             true
         }
     }
 
-    override fun onPreferenceTreeClick(preferenceScreen: PreferenceScreen, preference: Preference): Boolean {
+    private fun requireActivity(): Activity {
+        return activity!!
+    }
+
+    override fun onPreferenceTreeClick(preference: Preference): Boolean {
         when (preference.key) {
             Prefs.KEY_ALARM_IN_SILENT_MODE -> {
                 val pref = preference as CheckBoxPreference
@@ -77,7 +83,7 @@ class SettingsFragment : PreferenceFragment() {
 
                 return true
             }
-            else -> return super.onPreferenceTreeClick(preferenceScreen, preference)
+            else -> return super.onPreferenceTreeClick(preference)
         }
     }
 
@@ -90,7 +96,7 @@ class SettingsFragment : PreferenceFragment() {
 
         (findPreference("volume_preference") as VolumePreference).onResume()
 
-        checkPermissions(activity, listOf(Alarmtone.Default()))
+        checkPermissions(requireActivity(), listOf(Alarmtone.Default()))
 
         findListPreference(Prefs.KEY_ALARM_SNOOZE)
                 .let { snoozePref ->

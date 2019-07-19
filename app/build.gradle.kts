@@ -65,13 +65,13 @@ val acraEmail = project.rootProject.file("local.properties")
         .getOrDefault("acra.email", "")
 
 android {
-    compileSdkVersion(26)
+    compileSdkVersion(29)
     defaultConfig {
         applicationId = "com.better.alarm"
         minSdkVersion(15)
-        targetSdkVersion(26)
+        targetSdkVersion(29)
         testApplicationId = "com.better.alarm.test"
-        testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         getByName("debug") {
@@ -111,14 +111,13 @@ android {
 dependencies {
     // App dependencies
     implementation(kotlin("stdlib", version = "1.3.30"))
-    implementation("com.android.support:support-annotations:28.0.0")
     implementation("ch.acra:acra:4.6.1")
     implementation("com.melnykov:floatingactionbutton:1.2.0")
     implementation("io.reactivex.rxjava2:rxjava:2.2.0")
     implementation("io.reactivex.rxjava2:rxandroid:2.1.0")
     implementation("com.f2prateek.rx.preferences2:rx-preferences:2.0.0")
-    implementation("com.android.support:support-v4:26.1.0") {}
     implementation("com.squareup.okhttp3:okhttp:4.0.1")
+    implementation("androidx.preference:preference:1.0.0")
 
     // Testing-only dependencies
     testImplementation("net.wuerl.kotlin:assertj-core-kotlin:0.1.1")

@@ -21,8 +21,8 @@ package com.better.alarm.alert
 import android.app.Notification
 import android.app.PendingIntent
 import android.content.Intent
-import android.preference.PreferenceManager
 import android.text.format.DateFormat
+import androidx.preference.PreferenceManager
 import com.better.alarm.BuildConfig
 import com.better.alarm.NotificationImportance
 import com.better.alarm.R
@@ -113,7 +113,7 @@ class BackgroundNotifications {
         val alarm = alarmsManager.getAlarm(id)
         val label: String = alarm?.labelOrDefault ?: ""
         val autoSilenceMinutes = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(mContext).getString(
-                "auto_silence", "10"))
+                "auto_silence", "10") ?: "10")
         val text = mContext.getString(R.string.alarm_alert_alert_silenced, autoSilenceMinutes)
 
         val notification = mContext.notificationBuilder(CHANNEL_ID, NotificationImportance.NORMAL) {
