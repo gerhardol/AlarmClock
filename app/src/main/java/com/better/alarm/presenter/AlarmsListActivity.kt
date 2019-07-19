@@ -25,7 +25,7 @@ import android.transition.*
 import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
-import androidx.fragment.app.FragmentActivity
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
 import com.better.alarm.BuildConfig
 import com.better.alarm.R
@@ -49,7 +49,7 @@ import io.reactivex.subjects.Subject
 /**
  * This activity displays a list of alarms and optionally a details fragment.
  */
-class AlarmsListActivity : FragmentActivity() {
+class AlarmsListActivity : AppCompatActivity() {
     private lateinit var mActionBarHandler: ActionBarHandler
     private val logger = container().logger()
     private val alarms = container().alarms()
@@ -202,7 +202,7 @@ class AlarmsListActivity : FragmentActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        return actionBar?.let { mActionBarHandler.onCreateOptionsMenu(menu, menuInflater, it) }
+        return supportActionBar?.let { mActionBarHandler.onCreateOptionsMenu(menu, menuInflater, it) }
                 ?: false
     }
 

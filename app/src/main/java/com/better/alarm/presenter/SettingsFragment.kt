@@ -1,6 +1,5 @@
 package com.better.alarm.presenter
 
-import android.app.Activity
 import android.content.ContentResolver
 import android.content.Intent
 import android.media.AudioManager
@@ -22,7 +21,7 @@ import io.reactivex.disposables.CompositeDisposable
  * Created by Yuriy on 24.07.2017.
  */
 
-class SettingsFragment : PreferenceFragment() {
+class SettingsFragment : PreferenceFragmentCompat() {
     private val alarmStreamTypeBit = 1 shl AudioManager.STREAM_ALARM
     private val vibrator = container().vibrator()
     private val rxSharedPreferences = container().rxPrefs()
@@ -61,10 +60,6 @@ class SettingsFragment : PreferenceFragment() {
             }
             true
         }
-    }
-
-    private fun requireActivity(): Activity {
-        return activity!!
     }
 
     override fun onPreferenceTreeClick(preference: Preference): Boolean {
