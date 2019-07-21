@@ -11,13 +11,13 @@ import java.io.IOException
 class RollosPlugin(val logger: Logger) : AlertPlugin {
     override fun go(alarm: PluginAlarmData, prealarm: Boolean, targetVolume: Observable<TargetVolume>): Disposable {
 
-        val client = OkHttpClient()
+        val value = if (prealarm) "80" else "40"
 
         val request = Request.Builder()
-                .url("http://192.168.0.14/deviceajax.do?cid=9&did=1010000&goto=0&command=0")
+                .url("http://192.168.0.200/deviceajax.do?cid=9&did=1010000&goto=$value&command=0")
                 .build()
 
-        client.newCall(request).enqueue(
+        OkHttpClient().newCall(request).enqueue(
                 object : Callback {
                     override fun onFailure(call: Call, e: IOException) {
                         logger.e("Response: $e", e)
