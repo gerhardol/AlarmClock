@@ -9,7 +9,7 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
-    <style name="TimePickerDialogFragmentDark" parent="Theme.AppCompat.Dialog">
+    <style name="TimePickerDialogFragmentDark" parent="ThemeOverlay.AppCompat.Dialog.Alert">
         <item name="android:windowNoTitle">true</item>
         <item name="timePickerDeleteButtonStyle">@style/DarkTimePickerDeleteButtonStyle</item>
     </style>
